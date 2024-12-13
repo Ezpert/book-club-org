@@ -16,32 +16,35 @@ interface LandingProps {
 const LandingPage = ({setPage}: LandingProps): React.JSX.Element =>{
 
     return(
-        <div>
-            <button onClick={()=> setPage("bookClub")}>Go to Book Club</button>
-            <button onClick={() =>setPage("createClub")}>Create Book Club</button>
-        </div>
+        // use <> to keep it consistent like our main component
+        <>
+            <h1>book clubs: </h1>
+            <button onClick={()=> setPage("bookClub")}>Join book club</button>
+            <button style={{margin: "0px 0px 0px 1000px"}} onClick={() =>setPage("createClub")}>Create Book Club</button>
+        </>
     )
 }
 
 //Making inline component BookClub
 const BookClub = ({setPage}: LandingProps): React.JSX.Element =>{
     return(
-        <div>
+        <>
             <button onClick={() => setPage("landingPage")}>Go back to landing</button>
             <p>Hello book clubbers! Weclome to the most optimal book club, BradleySexuals!</p>
             <h1>Books being read right now:</h1>
-            <p>38 laws of power</p>
-            <p>psychology 101</p>
-        </div>
+
+
+
+        </>
     )
 }
 
 const CreateClub = ({setPage}: LandingProps): React.JSX.Element => {
     return(
-        <div>
+        <>
             <p>here we can create clubs</p>
             <button onClick={()=> setPage("landingPage")}>Go back to landing page</button>
-        </div>
+        </>
     )
 }
 
@@ -56,7 +59,6 @@ const Landing = () =>{
     return (
         <>
         {
-        
             page === "landingPage"?(
                 <LandingPage setPage={setPage}/>
             ): page === "bookClub" ?(
@@ -66,9 +68,7 @@ const Landing = () =>{
             ): (
                 <p>error page</p>
             )
-
         }
-        
         </>
     )
 
