@@ -2,7 +2,7 @@ import {useState} from "react";
 
 
 //so this syntax allows us to not have to do prop.whatever, it destructures it for us, that's why the component is declared so weirdly
-//if you have any questions about the code shoot me a message :) - Ruben
+//if you have any questions about the code shoot me a message, typescript makes component  declaration weird :) - Ruben
 const LandingPage = ({setPage}: {setPage: (page: string) => void}) =>{
     return(
         <div>
