@@ -1,3 +1,6 @@
+import LandingPage from "./components/LandingPage.tsx";
+import CreateClub from "./components/CreateClub.tsx";
+import BookClub from "./components/BookClub.tsx"
 import React, {useState} from "react";
 
 
@@ -7,46 +10,16 @@ import React, {useState} from "react";
 // React.JSX.Element essentially is just explicitly annotating the return type of the component.
 // This is so TypeScript knows for sure that is our return type on each of our components.
 
-interface LandingProps {
-    setPage : (page: string) => void
-}
+
 
 //so this syntax allows us to not have to do prop.whatever, it destructures it for us, that's why the component is declared so weirdly
 //if you have any questions about the code shoot me a message, typescript makes component  declaration weird :) - Ruben
-const LandingPage = ({setPage}: LandingProps): React.JSX.Element =>{
 
-    return(
-        // use <> to keep it consistent like our main component
-        <>
-            <h1>book clubs: </h1>
-            <button onClick={()=> setPage("bookClub")}>Join book club</button>
-            <button style={{margin: "0px 0px 0px 1000px"}} onClick={() =>setPage("createClub")}>Create Book Club</button>
-        </>
-    )
-}
 
 //Making inline component BookClub
-const BookClub = ({setPage}: LandingProps): React.JSX.Element =>{
-    return(
-        <>
-            <button onClick={() => setPage("landingPage")}>Go back to landing</button>
-            <p>Hello book clubbers! Weclome to the most optimal book club, BradleySexuals!</p>
-            <h1>Books being read right now:</h1>
 
 
 
-        </>
-    )
-}
-
-const CreateClub = ({setPage}: LandingProps): React.JSX.Element => {
-    return(
-        <>
-            <p>here we can create clubs</p>
-            <button onClick={()=> setPage("landingPage")}>Go back to landing page</button>
-        </>
-    )
-}
 
 
 
@@ -59,6 +32,7 @@ const Landing = () =>{
     return (
         <>
         {
+        
             page === "landingPage"?(
                 <LandingPage setPage={setPage}/>
             ): page === "bookClub" ?(
@@ -68,7 +42,9 @@ const Landing = () =>{
             ): (
                 <p>error page</p>
             )
+
         }
+        
         </>
     )
 
