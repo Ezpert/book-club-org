@@ -1,7 +1,7 @@
 import LandingPage from "./components/LandingPage.tsx";
 import CreateClub from "./components/CreateClub.tsx";
 import BookClub from "./components/BookClub.tsx"
-import React, {useState} from "react";
+import {useState} from "react";
 
 
 //Made an interface to declare the types of props beforehand. Apparently this is best practice
