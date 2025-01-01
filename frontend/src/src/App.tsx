@@ -4,6 +4,7 @@ import BookClub from "./components/BookClub.tsx"
 import {useState} from "react";
 
 
+
 //Made an interface to declare the types of props beforehand. Apparently this is best practice
 // Essentially it just declares the setPage prop to have a function type that has a parameter page and returns void
 // We can just use LandingProps to type setPage in all the three other components i.e. ( LandingPage, BookClub, CreateClub )
@@ -19,12 +20,8 @@ import {useState} from "react";
 //Making inline component BookClub
 
 
-
-
-
-
-
 const Landing = () =>{
+
 
     const [page, setPage] = useState<string>("landingPage")
 

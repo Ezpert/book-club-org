@@ -15,6 +15,7 @@ class Book(models.Model):
                 return f"ID: {self.id} |  Title: {self.title}"
 
 class Club(models.Model):
+        id = models.AutoField(primary_key=True)
         name = models.CharField(max_length=100, unique=True)
         description = models.TextField()
         current_book = models.ForeignKey(
@@ -41,6 +42,7 @@ class Club(models.Model):
                 return self.name
 
 class BookRequest(models.Model):
+        id = models.AutoField(primary_key=True)
         book = models.ForeignKey(
                 Book,
                 on_delete=models.CASCADE,

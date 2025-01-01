@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 
 //Made an interface to declare the types of props beforehand. Apparently this is best practice
@@ -10,15 +11,58 @@ import React, {useState} from "react";
 interface LandingProps {
     setPage : (page: string) => void
 }
+// interface Book{
+//     title: string
+//     description: string
+// }
+//
+// interface User{
+//     username: string
+//     password: string
+// }
 
+interface Club {
+    name: string
+    description: string
+}
+
+interface Response {
+    data: Club[]
+}
 //so this syntax allows us to not have to do prop.whatever, it destructures it for us, that's why the component is declared so weirdly
 //if you have any questions about the code shoot me a message, typescript makes component  declaration weird :) - Ruben
 const LandingPage = ({setPage}: LandingProps): React.JSX.Element =>{
+    const [clubList, setClubList] = useState<Club[]>();
+
+    async function getClubs() {
+        try{
+            const {data, status} = await axios.get<Response>(
+                'http://127.0.0.1:8000/clubs/',
+                {
+                    headers: {
+                        Accept: 'application/json',
+                    },
+                },
+            );
+            console.log(JSON.stringify(data, null, 4));
+            console.log('response status is: ', status);
+            setClubList(data.data);
+            console.log(clubList)
+
+        }catch(e){
+            console.error("Error!", e)
+        }
+    }
+
+    useEffect(() => {
+        getClubs()
+    }, []);
 
     return(
         // use <> to keep it consistent like our main component
         <>
             <h1>book clubs: </h1>
+            {clubList}
             <button onClick={()=> setPage("bookClub")}>Join book club</button>
             <button style={{margin: "0px 0px 0px 1000px"}} onClick={() =>setPage("createClub")}>Create Book Club</button>
         </>

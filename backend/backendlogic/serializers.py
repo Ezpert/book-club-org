@@ -24,7 +24,6 @@ class BookRequestSerializer(serializers.ModelSerializer):
         model = BookRequest
         fields = ['id', 'book', 'club', 'date_added', 'extra_info']
 
-    logger.info('pegging test')
     def validate(self, value):
         book_queue = Club.book_q.through.objects.filter(club=value['club'].id)
         # we are trying to make sure that there can be no duplicates inside the current queue
